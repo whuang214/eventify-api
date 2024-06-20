@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eventify_api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class EventsController : ControllerBase
     {
