@@ -1,9 +1,6 @@
 ﻿using eventify_api.Interfaces;
 using eventify_api.Models;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Threading.Tasks;
 
 namespace eventify_api.Services
 {
