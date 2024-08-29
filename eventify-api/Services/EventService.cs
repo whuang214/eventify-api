@@ -18,7 +18,7 @@ namespace eventify_api.Services
             var eventDetailsJson = await _openAIService.GetEventDetailsAsync(inputText);
 
             // Log the event details JSON for debugging (remove this in production)
-            Console.WriteLine($"Event Details JSON: {eventDetailsJson}");
+            // Console.WriteLine($"Event Details JSON: {eventDetailsJson}");
 
             // Clean the JSON content
             string cleanedJson = CleanJsonContent(eventDetailsJson);
@@ -29,7 +29,7 @@ namespace eventify_api.Services
             {
                 eventDetails = JsonConvert.DeserializeObject<EventDetails>(cleanedJson);
                 // Log the deserialized event details for debugging (remove this in production)
-                Console.WriteLine($"Event Details: {JsonConvert.SerializeObject(eventDetails, Formatting.Indented)}");
+                // Console.WriteLine($"Event Details: {JsonConvert.SerializeObject(eventDetails, Formatting.Indented)}");
             }
             catch (JsonException ex)
             {

@@ -16,7 +16,7 @@ namespace eventify_api.Services
             _apiKey = configuration["ApiSettings:OpenAPI_Key"];
 
             // Log the API key for debugging (remove this in production)
-            Console.WriteLine($"API Key: {_apiKey}");
+            // Console.WriteLine($"API Key: {_apiKey}");
         }
 
         public async Task<string> GetEventDetailsAsync(string inputText)
@@ -25,11 +25,11 @@ namespace eventify_api.Services
             request.Headers.Add("Authorization", $"Bearer {_apiKey}");
 
             // Log the Authorization header for debugging (remove this in production)
-            Console.WriteLine($"Authorization Header: Bearer {_apiKey}");
+            // Console.WriteLine($"Authorization Header: Bearer {_apiKey}");
 
             var requestBody = new
             {
-                model = "gpt-3.5-turbo",
+                model = "gpt-4o-mini",
                 messages = new[]
                 {
                     new { role = "system", content = @"
