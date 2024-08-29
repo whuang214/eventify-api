@@ -8,12 +8,12 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
 # Copy the .csproj file and restore dependencies
-COPY ["eventify-api.csproj", "./"]
-RUN dotnet restore "./eventify-api.csproj"
+COPY ["eventify-api/eventify-api.csproj", "eventify-api/"]
+RUN dotnet restore "eventify-api/eventify-api.csproj"
 
 # Copy the entire project and build it
 COPY . .
-WORKDIR "/src"
+WORKDIR "/src/eventify-api"
 RUN dotnet build "eventify-api.csproj" -c Release -o /app/build
 
 # Publish the project
