@@ -1,12 +1,12 @@
 # Eventify API
 
-Eventify API is a web API that extracts event details from text input using OpenAI's GPT-3.5 model and returns them as a JSON object. It also generates an ICS file that can be used to add events to calendar applications. You can find the client-side code for this API in [this](https://github.com/whuang214/eventify-client) repo.
+Eventify API is a web API that extracts event details from text input using OpenAI's GPT-4 model and returns them as a JSON object. It also generates an ICS file that can be used to add events to calendar applications. You can find the client-side code for this API in [this](https://github.com/whuang214/eventify-client) repo.
 
 ### Features
 - Extracts event details from provided text.
 - Returns event details as a JSON object.
 - Generates ICS files for easy calendar integration.
-- Utilizes OpenAI's GPT-3.5 model for natural language processing.
+- Utilizes OpenAI's GPT-4 model for natural language processing.
 
 ### Prerequisites
 - [.NET 8.0 SDK or later](https://dotnet.microsoft.com/en-us/download)
@@ -41,5 +41,19 @@ END:VCALENDAR
 - Make sure to add your OpenAI API key to the User Secrets/`secrets.json`. You can do so using the following commands:
 ```bash
 dotnet user-secrets init
+
+# Set OpenAI API key
 dotnet user-secrets set "ApiSettings:OpenAPI_Key" "<your-api-key>"
+
+# Set Frontend Origin
+dotnet user-secrets set "FrontendOrigin" "<your-frontend-origin>"
+
 ```
+
+
+### Changes:
+- **Updated to GPT-4 model** for natural language processing.
+- **Added Frontend Origin** to user secrets configuration to manage CORS. 
+
+This will allow users to configure both the OpenAI API key and the frontend origin using user secrets without hardcoding these values.
+
