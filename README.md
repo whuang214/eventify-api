@@ -7,6 +7,7 @@ Eventify API is a web API that extracts event details from text input using Open
 - Returns event details as a JSON object.
 - Generates ICS files for easy calendar integration.
 - Utilizes OpenAI's GPT-4 model for natural language processing.
+>>>>>>> 4e1b709e26bc7fd4fbcb2a27565bf3c6044c75ba
 
 ### Prerequisites
 - [.NET 8.0 SDK or later](https://dotnet.microsoft.com/en-us/download)

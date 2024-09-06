@@ -12,6 +12,9 @@ builder.Services.AddSwaggerGen();
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .AddUserSecrets<Program>();
 
+// Retrieve frontend origin from user secrets or appsettings
+var frontendOrigin = builder.Configuration["FrontendOrigin"];
+
 // Custom services
 builder.Services.AddSingleton<IOpenAIService, OpenAIService>();
 builder.Services.AddSingleton<IEventService, EventService>();
@@ -19,13 +22,23 @@ builder.Services.AddSingleton<IEventService, EventService>();
 // Configure CORS
 builder.Services.AddCors(options =>
 {
+    // Development CORS policy (allow any origin)
     options.AddPolicy("DevelopmentCorsPolicy", builder =>
     {
         builder.AllowAnyOrigin()
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
+
+    // Production CORS policy (allow specific origin)
+    options.AddPolicy("ProductionCorsPolicy", builder =>
+    {
+        builder.WithOrigins(frontendOrigin) // Allow only your React frontend
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
 });
+
 
 var app = builder.Build();
 
@@ -34,9 +47,13 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-
-    app.UseCors("DevelopmentCorsPolicy");
+    app.UseCors("DevelopmentCorsPolicy"); // Use the development CORS policy
 }
+else
+{
+    app.UseCors("ProductionCorsPolicy"); // Use the production CORS policy
+}
+
 
 app.UseHttpsRedirection();
 
