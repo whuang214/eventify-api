@@ -1,3 +1,7 @@
+> **⚠️ [ARCHIVED/DEPRECATED]**
+>
+> This repository is no longer actively maintained and has been replaced by [text2isc](https://github.com/whuang214/text2isc).
+
 # Eventify API
 
 Eventify API is a web API that extracts event details from text input using OpenAI's GPT-4 model and returns them as a JSON object. It also generates an ICS file that can be used to add events to calendar applications. You can find the client-side code for this API in [this](https://github.com/whuang214/eventify-client) repo.
